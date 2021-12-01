@@ -26,3 +26,22 @@ const element = <h1>hello, {name}</h1>;
 
 ReactDOM.render(element, document.getElementById("root"));
 ```
+
+### Expression Vs Statement
+* Expression
+Di evaluasi akan di evaluasi untuk sebuah nilai, atau setelah kodenya selesai di eksekusi akan menghasilkan nilai
+```javascript
+{3 + 5}
+// akan di evaluasi menghasilkan nilai yaitu 8
+```
+
+* Statement
+```javascript
+if (name === "Fahriz") { // statement
+console.log("Im fahriz");
+else {
+  console.log("im not fahriz")
+}
+```
+Statement meminta komputer untuk melakukan beberapa pekerjaan untuk mengevaluasi diatas yaitu name === fahriz 
+dan kemudian tergantung statement itu menghasilkan sesuatu.
