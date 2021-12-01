@@ -50,7 +50,7 @@ dan kemudian tergantung statement itu menghasilkan sesuatu.
 Fitur es6 untuk menginjeksi string kedalam javascript
 format code
 > ```javascript
-> {`$expression`}
+> {`${expression}`}
 > ```
 
 ```javascript
