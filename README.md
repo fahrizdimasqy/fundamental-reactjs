@@ -19,9 +19,9 @@ ReactDOM.render(
 import React from "react";
 import ReactDOM from "react-dom";
 
-<!-- deklarasi variabel -->
+// deklarasi variabel
 const name = "fahriz";
-<!-- deklarasi variabel element dengan nilai <h1> dan panggil name menggunakan {} sebagai expression -->
+// deklarasi variabel element dengan nilai <h1> dan panggil name menggunakan {} sebagai expression -->
 const element = <h1>hello, {name}</h1>;
 
 ReactDOM.render(element, document.getElementById("root"));
