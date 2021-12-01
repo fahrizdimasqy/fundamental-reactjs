@@ -15,7 +15,7 @@ ReactDOM.render(
 );
 ```
 ### Javascript Expressions in JSX
-```react
+```javascript
 import React from "react";
 import ReactDOM from "react-dom";
 
