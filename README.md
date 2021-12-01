@@ -45,3 +45,28 @@ else {
 ```
 Statement meminta komputer untuk melakukan beberapa pekerjaan untuk mengevaluasi diatas yaitu name === fahriz 
 dan kemudian tergantung statement itu menghasilkan sesuatu.
+
+### Template Literal
+Fitur es6 untuk menginjeksi string kedalam javascript
+format code
+> ```javascript
+> {`$expression`}
+> ```
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+const firstName = "Fahriz";
+const lastName = "Dimas";
+const luckyNumber = 16;
+
+ReactDOM.render(
+  <div>
+    <h1>Hello {`${firstName} ${lastName}</h1>
+    <p>your lucky number is {luckyNumber}</p>
+  </div>,
+  document.getElementById("root")
+);
+
+```
