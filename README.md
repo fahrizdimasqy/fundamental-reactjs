@@ -137,4 +137,41 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+### Import Export
+bisa menggunakan nilai / apapun dari file lain
+* math.js
+```javascript
+const pi = 3.14;
 
+function doublePi() {
+  return pi * 2;
+}
+function triplePi() {
+  return pi * 3;
+}
+
+// hanya boleh memiliki 1 export default
+export default pi;
+
+// export lebih dari 1
+// nama export harus sama dengan apa yang ingin di export
+export { doublePi, triplePi };
+```
+
+* index.js
+`javascript
+import React from "react";
+import ReactDOM from "react-dom";
+// export default import bisa menggunakan nama bebas, tapi jika lebih dari 1 pastikan nama yang di import sama dengan nama export
+import PI, { doublePi, triplePi } from "./math.js";
+
+ReactDOM.render(
+  <ul>
+    <li>{PI}</li>
+    {/* karena dobulePi sebagai function maka dipanggil menggunakan() */}
+    <li>{doublePi()}</li>
+    <li>{triplePi()}</li>
+  </ul>,
+  document.getElementById("root")
+);
+```
