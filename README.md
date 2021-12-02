@@ -87,3 +87,54 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
+### Inline Style JSX
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+const heading = {
+  color:"red",
+  fontSize: 50,
+}
+
+heading.color="blue";
+
+ReactDOM.render(<h1 style={heading}>Hello World!</h1>, document.getElementById("root"));
+```
+digunakan untuk kebutuhan cepat atau perubahan cepat karena dibuat menggunakan objek javascript
+
+### Practice style jsx
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+
+const customColor = {
+  color: "red"
+};
+
+const date = new Date();
+var currentTime = date.getHours();
+
+let greeting = "";
+if (currentTime < 12) {
+  greeting = "Good Morning";
+  customColor.color = "red";
+} else if (currentTime < 12 && currentTime > 18) {
+  greeting = "Good Afternoon";
+  customColor.color = "green";
+} else {
+  greeting = "Good Evening";
+  customColor.color = "blue";
+}
+
+ReactDOM.render(
+  <div>
+    <h1 className="heading" style={customColor}>
+      {greeting}
+    </h1>
+  </div>,
+  document.getElementById("root")
+);
+```
+
