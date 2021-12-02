@@ -159,7 +159,7 @@ export { doublePi, triplePi };
 ```
 
 * index.js
-`javascript
+```javascript
 import React from "react";
 import ReactDOM from "react-dom";
 // export default import bisa menggunakan nama bebas, tapi jika lebih dari 1 pastikan nama yang di import sama dengan nama export
