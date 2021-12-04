@@ -185,7 +185,7 @@ import ReactDOM from "react-dom";
 function Card(props) {
   return (
     <div>
-      {/* cara memanggil data props.nama_attribute */}
+      {/* cara memanggil data property yang dikirimkan dari custom component yang digunakan props.nama_attribute */}
       <h2>{props.name}</h2>
       <img src={props.img} alt="avatar_img" />
       <p>{props.tlp}</p>
