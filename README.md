@@ -178,7 +178,9 @@ ReactDOM.render(
 
 ### Props
 mengirimkan props
-> <Component nama_props={value} />
+```javascript
+<Component nama_props={value} />
+```
 
 mengakses props
 > props.nama_props
@@ -222,7 +224,9 @@ ReactDOM.render(
 ```
 ### Maping data ke component
 format Maping
+
 > nama_variabel/array.map(fungsi_yang_di_mapping)
+
 pertama buat component terlebih dahulu jangan lupa gunakan props sebagai parameter untuk bisa menangkap datanya
 * Entry.jsx
 ```javascript
