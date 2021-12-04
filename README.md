@@ -177,6 +177,12 @@ ReactDOM.render(
 ```
 
 ### Props
+mengirimkan props
+> <Component nama_props={value} />
+
+mengakses props
+> props.nama_props
+
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
@@ -214,4 +220,87 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+### Maping data ke component
+format Maping
+> nama_variabel/array.map(fungsi_yang_di_mapping)
+pertama buat component terlebih dahulu jangan lupa gunakan props sebagai parameter untuk bisa menangkap datanya
+* Entry.jsx
+```javascript
+import React from "react";
+function Entry(props) {
+  return (
+    <div className="term">
+      <dt>
+        <span className="emoji" role="img" aria-label="Tense Biceps">
+          {props.emoji}
+        </span>
+        <span>{props.name}</span>
+      </dt>
+      <dd>{props.meaning}.</dd>
+    </div>
+  );
+}
+export default Entry;
+```
+* Export data dummy
+```javascript
+const emojipedia = [
+  {
+    id: 1,
+    emoji: "💪",
+    name: "Tense Biceps",
+    meaning:
+      "“You can do that!” or “I feel strong!” Arm with tense biceps. Also used in connection with doing sports, e.g. at the gym."
+  },
+  {
+    id: 2,
+    emoji: "🙏",
+    name: "Person With Folded Hands",
+    meaning:
+      "Two hands pressed together. Is currently very introverted, saying a prayer, or hoping for enlightenment. Is also used as a “high five” or to say thank you."
+  },
+  {
+    id: 3,
+    emoji: "🤣",
+    name: "Rolling On The Floor, Laughing",
+    meaning:
+      "This is funny! A smiley face, rolling on the floor, laughing. The face is laughing boundlessly. The emoji version of “rofl“. Stands for „rolling on the floor, laughing“."
+  }
+];
 
+export default emojipedia;
+```
+lalu buat sebuah function untuk di maping yang berisi component yang ingin di maping
+* App.jsx
+```javascript
+import React from "react";
+import Entry from "./Entry";
+import emojipedia from "../emojipedia";
+
+
+//fungsi createEntry dengan parameter emojiItem yang dimana parameter ini digunakan untuk menangkap datanya
+function createEntry(emojiItem) {
+  return (
+  //panggil Component Entry dan beri props untuk dikirimkan
+    <Entry
+      key={emojiItem.id}
+      emoji={emojiItem.emoji}
+      name={emojiItem.name}
+      meaning={emojiItem.meaning}
+    />
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>
+        <span>Emojipedia</span>
+      </h1>
+     //maping data emojipedia ke fungsi createEntry yang berisi component Entry
+      <dl className="dictionary">{emojipedia.map(createEntry)}</dl>
+    </div>
+  );
+}
+export default App;
+```
