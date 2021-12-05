@@ -402,3 +402,50 @@ variabel = (parameter1, paramter2) => {
 }
 ;
 ```
+
+### Ternary Operator
+
+```javascript
+condition ? benar : salah;
+```
+contoh:
+```javascript
+const x = 80;
+x > 75 ? "lulus" : "tidak lulus";
+```
+
+### And Operator
+and operator di javascript
+```javascript
+(expression && expression)
+```
+contoh:
+```javascript
+var x = 5;
+(x > 5 && x < 7);
+// x > 5 = true dan x < = true maka nilai keseluruhan expresi adalah true
+```
+sekarnag jika x nilainya adalah 1
+```javascript
+var x = 1;
+(x > 5 && x < 7);
+// x > 5 = false karena nilainya sudah false maka expresi selanjutnya tidak akan di cek karena salah satu nilainya sudah false
+```
+
+AND Operator di React
+```javascript
+condition && expression
+//sisi kiri adalah kondisi dan di sisi kanan adalah expresion  yang akan di evaluasi selama kondisinya benar
+true && expression
+//tapi jika kondisinya salah maka sisi kanan tidak akan di evaluasi
+false && expression
+```
+contoh:
+```javascript
+const currentTime = 18;
+currenTime > 12 && <h1> kenapa kamu masih bekerja? </h1>
+// akan menghasilkan kenapa kamu masih bekerja?
+// jika currentTime tidak memenuhi kondisi maka sisi kanan tidka akan di cek
+// biasanya ini digunakan hanya untuk memeriksa 1 kondisi
+```
+
