@@ -366,3 +366,19 @@ const newNumber = numbers.findIndex(function (num) {
 console.log(newNumber);
 ```
 ### Arow Function
+> variabel = (parameter) => statement;
+jika memiliki 1 parameter dan 1 statement bisa d hapus kurungnya() dan kurung {}
+> variabel = (parameter) => statement;
+
+jika memiliki lebih dari 1 parameter dan lebih dari 1 statement
+```javascript
+variabel = (parameter1, paramter2) => {
+  
+  if(parameter1 == parameter2 ) {
+    return parameter1 * parameter2;
+  } else {
+    return "wrong";
+  }
+}
+;
+```
