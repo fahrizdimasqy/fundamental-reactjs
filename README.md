@@ -367,7 +367,9 @@ console.log(newNumber);
 ```
 ### Arow Function
 > variabel = (parameter) => statement;
+
 jika memiliki 1 parameter dan 1 statement bisa d hapus kurungnya() dan kurung {}
+
 > variabel = (parameter) => statement;
 
 jika memiliki lebih dari 1 parameter dan lebih dari 1 statement
