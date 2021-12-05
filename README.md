@@ -175,6 +175,24 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+### Expression Vs Statement
+Expression untuk menghasilkan nilai
+```javascript
+a = a+6; //expresi karena menghasilkan nilai dari a ditambah 6
+```
+
+```javascrpit
+hasil = 5*2; //expresi karena akan menghasilkan nilai 5*2 yaitu 10 yang disimpan di variable hasil
+```
+
+Stament untuk melakukan sesuatu
+```javascript
+var a = 5; // untuk membuat variable bernilai 5
+```
+```javascript
+console.log(5); // statement karena untuk menampilkan angka 5 dalam konsole
+```
+
 
 ### Props
 mengirimkan props
