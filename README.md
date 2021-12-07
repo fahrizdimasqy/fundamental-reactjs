@@ -487,6 +487,25 @@ item yang terpenuhi kemudian akan dikembalikan dan disimpan dalam variabel resto
 Nah, pendekatan kedua inilah declarative pattern. Functional programming itu sebisa mungkin
 menggunakan declarative pattern.
 
+```javascript
+import React from "react";
+
+var isDone = false;
+
+const strikeStyle = {
+  textDecoration: "line-through"
+};
+
+function App() {
+  return (
+    <div>
+      <p style={isDone ? strikeStyle : null}>Buy milk</p>
+    </div>
+  );
+}
+
+export default App;
+```
 
 ### Imperative Programming
 ```javascript
@@ -523,4 +542,10 @@ Kode diatas,
 * kemudian masih pada iterasi tersebut dilakukan pengecekan apakah key qty pada item dengan index
 * itu nilainya kurang dari tiga atau tidak,
 * jika kurang dari tiga maka item tersebut dimasukkan ke dalam variabel restock
+
+### React Hook
+Hook merupakan cara agar kita bisa menggunakan atau mengakses state dan ReactJS lifecycle
+dengan functional component.
+
+
 
