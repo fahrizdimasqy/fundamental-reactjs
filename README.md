@@ -449,3 +449,7 @@ currenTime > 12 && <h1> kenapa kamu masih bekerja? </h1>
 // biasanya ini digunakan hanya untuk memeriksa 1 kondisi
 ```
 
+### State
+State adalah sebuah object untuk menyimpan data pada React dan akan di render atau muat ulang ketika data mengalami perubahan.
+biasanya digunakan untuk perubahan antarmuka tetapi perubahan itu bergantung pada nilai variabel itu
+
