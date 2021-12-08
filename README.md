@@ -543,9 +543,97 @@ Kode diatas,
 * itu nilainya kurang dari tiga atau tidak,
 * jika kurang dari tiga maka item tersebut dimasukkan ke dalam variabel restock
 
+### Destructuring assignment 
+Destructuring assignment merupakan fitur Javascript yang berfungsi memecah item atau properti dari
+sebuah array atau objek ke dalam variabel yang berbeda.
+### Array Destructuring 
+Sebagai contoh, kita akan memecah setiap items pada array menjadi sebuah variabel tersendiri
+biasa:
+```javascript
+const colors = ['merah', 'kuning', 'hijau']
+// cara biasa
+let satu = colors[0]
+let dua = colors[1]
+let tiga = colors[2]
+console.log(satu) // merah
+console.log(dua) // kuning
+console.log(tiga) // hijau
+```
+array destructuring
+```javascript
+const colors = ['merah', 'kuning', 'hijau']
+// array destructuring
+let [satu, dua, tiga] = colors
+console.log(satu) // merah
+console.log(dua) // kuning
+console.log(tiga) // hijau
+```
+#### Object Destructuring
+```javascript
+const user = {
+ name: 'Melodi',
+ gender: 0,
+ age: 24
+}
+// object destructuring
+let { name, gender, age } = user
+console.log(name) // Melodi
+console.log(gender) // 0
+console.log(age) // 24
+```
+
+
 ### React Hook
 Hook merupakan cara agar kita bisa menggunakan atau mengakses state dan ReactJS lifecycle
 dengan functional component.
 
+### UseState
+Untuk menyimpan variabel dan dipantau ketika ada perubahan nilai maka component akan di render ulang.
+Format Penulisan
+```javascript
+const [nameState, setterState] = React.useState(initialValue)
+```
+Keterangan:
+* nameState adalah nama dari variabel yang akan dimasukkan ke state yaitu: number
+* setterState adalah nama fungsi yang akan digunakan untuk mengubah nilai state number, yaitu
+* increment
+* initialValue adalah nilai awal dari state number atau dalam hal ini 0
+```javascript
+const Counter = () => {
+ const [number, increment] = React.useState(0)
+ return <div>
+ <h1> Counter App</h1>
+ <p>Nilai counter saat ini: {number}</p>
+ <button onClick={() => increment(number+1)}> + </button>
+ </div>
+}
+```
 
+contoh dalam react:
+```javascript
+import React, { useState } from "react";
+
+function App() {
+  const [number, setNumber] = useState(0);
+
+  function increment() {
+    setNumber(number + 1);
+  }
+
+  function decrement() {
+    setNumber(number - 1);
+  }
+
+  return (
+    <div className="container">
+      <h1>{number}</h1>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+    </div>
+  );
+}
+
+export default App;
+```
+jadi useState React Hook digunakan untuk website agar diperbaharui secara dinamis
 
