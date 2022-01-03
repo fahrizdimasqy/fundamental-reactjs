@@ -647,7 +647,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
-
+Kita juga perlu perhatikan
+penamaan variabel-variabelnya. Pastikan penamaannya sama seperti yang dimiliki oleh
+properti objeknya
 
 
 ### React Hook
