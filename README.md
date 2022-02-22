@@ -706,3 +706,232 @@ export default App;
 ```
 jadi useState React Hook digunakan untuk website agar diperbaharui secara dinamis
 
+### Memperbarui objek dan array dalam keadaan
+Anda dapat menempatkan objek dan array ke dalam status. Di React, status dianggap hanya-baca, jadi Anda harus menggantinya daripada mengubah objek yang sudah ada . Misalnya, jika Anda memiliki formobjek dalam status, jangan perbarui seperti ini:
+
+```javascript
+// Don't mutate an object in state like this:
+form.firstName = 'Taylor';
+```
+
+Sebagai gantinya, ganti seluruh objek dengan membuat yang baru:
+```javascript
+setForm({
+  ...form,
+  firstName: 'Taylor'
+});
+```
+
+### Contoh 1 dari 4 :Bentuk (objek)
+Dalam contoh ini, formvariabel state memegang sebuah objek. Setiap input memiliki pengendali perubahan yang memanggil setFormstatus berikutnya dari seluruh formulir. Sintaks { ...form }spread memastikan bahwa objek status diganti daripada dimutasi.
+
+```javascript
+import { useState } from 'react';
+
+export default function Form() {
+  const [form, setForm] = useState({
+    firstName: 'Barbara',
+    lastName: 'Hepworth',
+    email: 'bhepworth@sculpture.com',
+  });
+
+  return (
+    <>
+      <label>
+        First name:
+        <input
+          value={form.firstName}
+          onChange={e => {
+            setForm({
+              ...form,
+              firstName: e.target.value
+            });
+          }}
+        />
+      </label>
+      <label>
+        Last name:
+        <input
+          value={form.lastName}
+          onChange={e => {
+            setForm({
+              ...form,
+              lastName: e.target.value
+            });
+          }}
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          value={form.email}
+          onChange={e => {
+            setForm({
+              ...form,
+              email: e.target.value
+            });
+          }}
+        />
+      </label>
+      <p>
+        {form.firstName}{' '}
+        {form.lastName}{' '}
+        ({form.email})
+      </p>
+    </>
+  );
+}
+
+```
+
+Secara teknis, dimungkinkan untuk mengubah isi dari objek itu sendiri . Ini disebut mutasi:
+```javascript
+position.x = 5;
+```
+Menyalin objek dengan sintaks spread
+Pada contoh sebelumnya, positionobjek selalu dibuat segar dari posisi kursor saat ini. Namun seringkali, Anda ingin memasukkan data yang ada sebagai bagian dari objek baru yang Anda buat. Misalnya, Anda mungkin ingin memperbarui hanya satu bidang dalam formulir, tetapi mempertahankan nilai sebelumnya untuk semua bidang lainnya.
+
+Bidang input ini tidak berfungsi karena onChangepenangan mengubah status:
+```javascript
+import { useState } from 'react';
+
+export default function Form() {
+  const [person, setPerson] = useState({
+    firstName: 'Barbara',
+    lastName: 'Hepworth',
+    email: 'bhepworth@sculpture.com'
+  });
+
+  function handleFirstNameChange(e) {
+    person.firstName = e.target.value;
+  }
+
+  function handleLastNameChange(e) {
+    person.lastName = e.target.value;
+  }
+
+  function handleEmailChange(e) {
+    person.email = e.target.value;
+  }
+
+  return (
+    <>
+      <label>
+        First name:
+        <input
+          value={person.firstName}
+          onChange={handleFirstNameChange}
+        />
+      </label>
+      <label>
+        Last name:
+        <input
+          value={person.lastName}
+          onChange={handleLastNameChange}
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          value={person.email}
+          onChange={handleEmailChange}
+        />
+      </label>
+      <p>
+        {person.firstName}{' '}
+        {person.lastName}{' '}
+        ({person.email})
+      </p>
+    </>
+  );
+}
+```
+Misalnya, baris ini mengubah status dari render sebelumnya:
+```javascript
+person.firstName = e.target.value;
+```
+Cara yang dapat diandalkan untuk mendapatkan perilaku yang Anda cari adalah dengan membuat objek baru dan meneruskannya ke setPerson. Tetapi di sini, Anda juga ingin menyalin data yang ada ke dalamnya karena hanya satu bidang yang berubah:
+```javascript
+setPerson({
+  firstName: e.target.value, // New first name from the input
+  lastName: person.lastName,
+  email: person.email
+});
+```
+Anda dapat menggunakan sintaks ... penyebaran objek sehingga Anda tidak perlu menyalin setiap properti secara terpisah.
+```javascript
+setPerson({
+  ...person, // Copy the old fields
+  firstName: e.target.value // But override this one
+});
+```
+
+Sekarang formulirnya berfungsi!
+
+Perhatikan bagaimana Anda tidak mendeklarasikan variabel status terpisah untuk setiap bidang input. Untuk formulir besar, menyimpan semua data yang dikelompokkan dalam suatu objek sangatlah mudah—asalkan Anda memperbaruinya dengan benar!
+
+```javascript
+import { useState } from 'react';
+
+export default function Form() {
+  const [person, setPerson] = useState({
+    firstName: 'Barbara',
+    lastName: 'Hepworth',
+    email: 'bhepworth@sculpture.com'
+  });
+
+  function handleFirstNameChange(e) {
+    setPerson({
+      ...person,
+      firstName: e.target.value
+    });
+  }
+
+  function handleLastNameChange(e) {
+    setPerson({
+      ...person,
+      lastName: e.target.value
+    });
+  }
+
+  function handleEmailChange(e) {
+    setPerson({
+      ...person,
+      email: e.target.value
+    });
+  }
+
+  return (
+    <>
+      <label>
+        First name:
+        <input
+          value={person.firstName}
+          onChange={handleFirstNameChange}
+        />
+      </label>
+      <label>
+        Last name:
+        <input
+          value={person.lastName}
+          onChange={handleLastNameChange}
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          value={person.email}
+          onChange={handleEmailChange}
+        />
+      </label>
+      <p>
+        {person.firstName}{' '}
+        {person.lastName}{' '}
+        ({person.email})
+      </p>
+    </>
+  );
+}
+```
+
+Perhatikan bahwa ...sintaks spread adalah "dangkal"—hanya menyalin sesuatu sedalam satu tingkat. Ini membuatnya cepat, tetapi itu juga berarti bahwa jika Anda ingin memperbarui properti bersarang, Anda harus menggunakannya lebih dari sekali.
