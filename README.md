@@ -935,3 +935,38 @@ export default function Form() {
 ```
 
 Perhatikan bahwa ...sintaks spread adalah "dangkal"—hanya menyalin sesuatu sedalam satu tingkat. Ini membuatnya cepat, tetapi itu juga berarti bahwa jika Anda ingin memperbarui properti bersarang, Anda harus menggunakannya lebih dari sekali.
+
+# reducers
+```javascript
+function(state, action){
+ switch(action.type){
+ case 'ADD_ITEM':
+ return // logic untuk menghandle add item ke dalam state
+ case 'REMOVE_ITEM':
+ return // logic untuk menghandle remove item dari state
+ default:
+ return state; // tidak ada tipe event yang cocok, kembalikan
+state dengan tanpa perubahan
+ }
+}
+```
+# Store
+Building Block berikutnya adalah Store. Sejatinya, store hanyalah cara untuk mengumpulkan reducer
+yang jumlahnya lebih dari satu menjadi satu state global yang akan dikonsumsi oleh komponen React.
+Pada Redux kita menggunakan fungsi combineReducers untuk mengumpulkan reducers menjadi
+satu, kemudian kita buat Store dengan fungsi createStore seperti ini:
+
+```javascript
+import { combineReducers, createStore } from 'redux';
+// MISALNYA KITA SUDAH MEMBUAT 2 REDUCER INI
+import itemReducer from './features/items';
+import userReducer from './features/users';
+// gabungkan reducers jadi satu
+let rootReducers = combineReducers({
+ items: itemReducer,
+ users: userReducer
+});
+// buat store
+let store = createStore(rootReducers);
+export default store;
+```
