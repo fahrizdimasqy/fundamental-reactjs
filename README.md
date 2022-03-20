@@ -970,3 +970,48 @@ let rootReducers = combineReducers({
 let store = createStore(rootReducers);
 export default store;
 ```
+### Middleware
+Middleware merupakan ekstensi yang bisa memberikan fitur yang tidak dimiliki bawaan oleh action, store
+maupun dispatch.
+Misalnya kita bisa membuat fungsi logger yang akan melakukan console.log untuk setiap event
+yang terjadi, kita bisa membuat custom middleware seperti ini:
+```javascript
+function logger(state, next, action){
+ return function(next){
+ return function(action){
+ console.log(`Memanggil ${action.type}`);
+ return next(action)
+ }
+ }
+}
+```
+Kemudian, kita akan mengaplikasikan middleware yang sudah kita buat ke Store dengan cara seperti
+berikut:
+```javascript
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+// MISALNYA KITA SUDAH MEMBUAT 2 REDUCER INI
+import itemReducer from './features/items';
+import userReducer from './features/users';
+// gabungkan reducers jadi satu
+let rootReducers = combineReducers({
+ items: itemReducer,
+ users: userReducer
+});
+// buat store
+let store = createStore(rootReducers, applyMiddleware(logger)); // <--
+- KITA APPLY MIDDLEWARE logger saat createStore
+export default store;
+ ```
+Kita menggunakan fungsi applyMiddleware dari Redux untuk menerapkan middleware logger yang
+sudah kita buat. Fungsi tersebut bisa menerima lebih dari satu middleware, yang artinya kita bisa
+menerapkan lebih dari satu middleware ke dalam Store.
+Urutan pemanggilan masing-masing middleware adalah sesuai dengan urutan kita memasukannya
+sebagai parameter pada applyMiddleware.
+```javascript
+let store = createStore(rootReducers,applyMiddleware(
+ logger, // <--- dieksekusi pertama
+ middlware1, // <--- dieksekusi kedua
+ middleware2, // <--- dieksekusi ketiga
+ middleware3, // <--- dieksekusi terakhir
+));
+```
